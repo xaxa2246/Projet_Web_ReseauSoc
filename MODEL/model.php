@@ -11,7 +11,7 @@ class Model{
 	function __construct() {
 		
 		try {
-			$this->schema = 'northwind';
+			$this->schema = 'reseausocial';
 			$dns = 'mysql:host=127.0.0.1;dbname='.$this->schema;
 			$utilisateur = "root";
 			$motDePasse = '';
@@ -49,11 +49,12 @@ class Model{
 		}
 		else{
 			$sql= 'SELECT '.$fields.' from '.$this->table .'  where ';
-			$sql.= $this->PK[0] .'='. $this->id[0];
+			$sql.= $this->PK[0] .'='. $this->connection->quote($this->id[0]);
 		}
 		
 		try {
 		  // On envois la requète
+		  echo $sql ;
 			$select = $this->connection->query($sql);
 			
 		  // On indique que nous utiliserons les résultats en tant qu'objet

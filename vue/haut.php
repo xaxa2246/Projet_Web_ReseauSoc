@@ -10,18 +10,16 @@
 <body>
 	<header id="header" class="header">
 		<H1>
-		<?php 
+					<?php 
 			if(isset($_SESSION['NOM']))
 			{ 
 				echo '<a href="../control/page1.php" >'.$_SESSION['NOM'].'</a>' ;
 			}
 		?>
 		</H1>
-		<ul>
-			<li><a href="../control/page1.php" >Ma page</a></li>
-			<li><a href="../control/page2.php" >Contact</a></li>
-			<li><a href="../control/destroy.php" >Logout</a></li>
-			<li><a href="../control/employees_tab.php" >Fil d'actualité</a></li>
-		</ul>
-		
+		<?php 
+		if (Control::user_connected()){
+			require_once('../vue/menu.php');
+		}
+		?>
 	</header>
